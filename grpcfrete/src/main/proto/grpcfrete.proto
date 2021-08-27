@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "br.com.zupacademy";
+option java_outer_classname = "Grpcfrete";
+option objc_class_prefix = "HLW";
+
+package br.com.zupacademy;
+
+service GrpcfreteService {
+  rpc send (GrpcfreteRequest) returns (GrpcfreteReply) {}
+}
+
+message GrpcfreteRequest {
+  string name = 1;
+}
+
+message GrpcfreteReply {
+  string message = 1;
+}
