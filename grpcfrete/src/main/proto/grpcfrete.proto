@@ -2,15 +2,27 @@ syntax = "proto3";
 
 option java_multiple_files = true;
 option java_package = "br.com.zupacademy";
-option java_outer_classname = "Grpcfrete";
+option java_outer_classname = "GrpcFreteServiceOuterClass";
 option objc_class_prefix = "HLW";
 
 package br.com.zupacademy;
 
-service GrpcfreteService {
+service GrpcFreteService {
   rpc send (GrpcfreteRequest) returns (GrpcfreteReply) {}
+
+  rpc calculaFrete (CalculaFreteRequest) returns (CalculaFreteResponse) {}
 }
 
+message CalculaFreteRequest {
+  string cep = 1;
+}
+
+message CalculaFreteResponse {
+  string cep = 1;
+  double valorFrete = 2;
+}
+
+// --------------------//
 message GrpcfreteRequest {
   string name = 1;
 }
