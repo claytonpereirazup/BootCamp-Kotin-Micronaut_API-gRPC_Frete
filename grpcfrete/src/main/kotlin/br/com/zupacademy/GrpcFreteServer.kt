@@ -43,7 +43,7 @@ class GrpcFreteServer: GrpcFreteServiceGrpc.GrpcFreteServiceImplBase() {
         try {
             valorFrete = Random.nextDouble(from = 0.0, until = 150.0)//deveria ser uma lógica complexa
             if (valorFrete > 100.0){
-                throw IllegalStateException("Erro Inesperado ao executar Lógica de Negócio!")
+                throw IllegalStateException("Erro Inesperado ao executar Lógica de Negócio! $valorFrete")
             }
         } catch (e: Exception) {
             responseObserver?.onError(Status.INTERNAL
@@ -59,7 +59,7 @@ class GrpcFreteServer: GrpcFreteServiceGrpc.GrpcFreteServiceImplBase() {
                 .setCode(Code.PERMISSION_DENIED.number)
                 .setMessage("Usuário Não Pode Acessar este Recurso!")
                 .addDetails(Any.pack(ErrorDetails.newBuilder()
-                    .setCode(401)
+                    .setCode(403)
                     .setMessage("Token Expirado")
                     .build()))
                 .build()
